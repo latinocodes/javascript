@@ -21,9 +21,7 @@ const isOutOfRange = (arr, index=0) => {
 }
 
 const isArrayEmpty = (arr) => {
-    if(arr.length === 0)
-        return true;
-    return false;
+    return arr.length === 0 ? true : false;
 }
 
 exports.head = (arr) => {
@@ -35,6 +33,17 @@ exports.head = (arr) => {
     }
     return "";
 }
+
+exports.last = (arr) => {
+    // function returns the first element of the array
+    let result = validateArray(arr)
+    
+    if(result == true && !isArrayEmpty(arr)){
+        return arr[arr.length-1];
+    }
+    return ""
+}
+
 
 exports.remove = (arr, index) => {
     // removes index passed element from array 
@@ -48,28 +57,51 @@ exports.remove = (arr, index) => {
     return ""
 }
 
-exports.last = (arr) => {
-    // function returns the first element of the array
-    let result = validateArray(arr)
-    
-    if(result == true && !isArrayEmpty(arr)){
-        return arr[arr.length-1];
-    }
-    return ""
+exports.range = (num, value='') => {
+    let result = [];
+    if(num === undefined)
+        throw "must pass a value"
+
+    else if(typeof num !== 'number')
+        throw "first parameter must be a number"
+
+    else if(value.length !== 0)
+        for(let val=0; val < num; val++)
+            result.push(value)
+    else
+        for(let val=0; val < num; val++)
+            result.push(val)
+
+    return result;
 }
 
 exports.countElements = (arr) => {
+    // Count the instances of each element in array
     dict = {}
+    let result = validateArray(arr)
 
-    arr.forEach(item => {
-        if(dict[item]){
-            dict[item] += 1
-        }
-        else{
-            dict[item] = 1
-        }
-        console.log(dict)
-    })
+    if(result === true){
+        arr.forEach(item => {
+            return dict[item] ? dict[item] += 1 : dict[item] = 1
+        })
+    }
     return dict;
 }
 
+exports.isEqual = (arr1, arr2) => {
+
+    let arrOneResult = validateArray(arr1)
+    let arrTwoResult = validateArray(arr2)
+
+    if(arrOneResult === true && arrTwoResult === true){
+
+        if (arr1.length != arr2.length) 
+            return false;
+
+        for(let count=0; count < arr1.length; count++)  // Loop throught each element and check if they are the same
+            if(arr1[count] !== arr2[count])
+                return false
+
+        return true;
+    }
+}
