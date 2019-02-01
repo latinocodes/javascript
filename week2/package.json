@@ -1,0 +1,12 @@
+{
+  "name": "cs-546-lab-2",
+  "version": "1.0.0",
+  "description": "The purpose of this lab is to familiarize yourself with Node.js modules and further your understanding of JavaScript syntax",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Lara 10416385",
+  "license": "ISC"
+}
