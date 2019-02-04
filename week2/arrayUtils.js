@@ -21,6 +21,7 @@ const isOutOfRange = (arr, index=0) => {
 }
 
 const isArrayEmpty = (arr) => {
+    // Checks if the array is empty
     return arr.length === 0 ? true : false;
 }
 
@@ -58,6 +59,7 @@ exports.remove = (arr, index) => {
 }
 
 exports.range = (num, value='') => {
+    // Returns the range of upto a number but no including it, if a value is pass it will return the VALUEx of times
     let result = [];
     if(num === undefined)
         throw "must pass a value"
@@ -89,7 +91,7 @@ exports.countElements = (arr) => {
 }
 
 exports.isEqual = (arr1, arr2) => {
-
+    //  checks if both arrays are equal 
     let arrOneResult = validateArray(arr1)
     let arrTwoResult = validateArray(arr2)
 
