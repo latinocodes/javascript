@@ -42,3 +42,9 @@ exports.countChart = (value) => {
     else { throw "invalid String" };
     
 }
+
+exports.Student = {
+    firstName: "Jose", 
+    lastName: "Lara", 
+    studentId: "10416385",
+};

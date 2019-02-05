@@ -107,3 +107,9 @@ exports.isEqual = (arr1, arr2) => {
         return true;
     }
 }
+
+exports.Student = {
+    firstName: "Jose", 
+    lastName: "Lara", 
+    studentId: "10416385",
+};

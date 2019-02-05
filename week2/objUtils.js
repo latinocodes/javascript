@@ -26,7 +26,7 @@ const helpConcatObj = (values, override=false) => {
 }
 
 
-const extend = (...values) => {
+exports.extend = (...values) => {
     // function taskes array of arguments and merge each object without overwriting properties from earlier entries
 
     if(values.length < 2)
@@ -35,67 +35,39 @@ const extend = (...values) => {
     return helpConcatObj(values, override=false);
 }
 
-const smush = (...values) => {
+exports.smush = (...values) => {
     // function taskes array of arguments and merge each object it overwrites properties from earlier entries
-    
+
     if(values.length < 2)
         throw 'arguments must be at least two'
 
     return helpConcatObj(values, override=true);
 }
 
-const mapValue = (values, fun) => {
-    let extended = {}
+exports.mapValue = (values, fun) => {
+    //  this function takes an object and a function as arguments and map those objects values to the function returning a new modified object based on the function
+    let modifiedObject = {}
     
     if(typeof values != "object"){
         throw 'arguments must be objects'
+    }
+    if(typeof fun != 'function'){
+        throw 'arguments must be a valid function'
     }
     // Getting the entry from each object element
     let entries = Object.entries(values)
 
     // looping throught key value entry if not in extended dictionary, add it
     for (let [key, value] of entries) {
-        if (!extended.hasOwnProperty(key)){
-            extended[key] = fun(value)
+        if (!modifiedObject.hasOwnProperty(key)){
+            modifiedObject[key] = fun(value)
         }
     }
-    return extended;
+    return modifiedObject;
 }
 
-
-const first = { x: 2, y: 3};
-const second = { a: 70, x: 4, z: 5 };
-const third = { x: 0, y: 9, q: 10 }
-
-const firstSecondThird = extend(first, second, third);
-// { x: 2, y: 3, a: 70, z: 5, q: 10 }
-
-const secondThird = extend(second, third);
-// { a: 70, x: 4, z: 5, y: 9, q: 10 } 
-
-const thirdFirstSecond = extend(third, first, second);
-// { x: 0, y: 9, q: 10, a: 70, z: 5 }
-
-console.log("printing extend")
-console.log(firstSecondThird)
-console.log(secondThird)
-console.log(thirdFirstSecond)
-
-
-const firstSecondThird1 = smush(first, second, third);
-// { x: 2, y: 3, a: 70, z: 5, q: 10 }
-
-const secondThird1 = smush(second, third);
-// { a: 70, x: 4, z: 5, y: 9, q: 10 } 
-
-const thirdFirstSecond1 = smush(third, first, second);
-// { x: 0, y: 9, q: 10, a: 70, z: 5 }
-
-console.log("printing smush")
-console.log(firstSecondThird1)
-console.log(secondThird1)
-console.log(thirdFirstSecond1)
-
-console.log("printing mapValue")
-console.log(mapValue(first, n => n + 1))
-console.log(mapValue({ a: 1, b: 2, c: 3 }, function hola(val) { return val * 5}))
+exports.Student = {
+    firstName: "Jose", 
+    lastName: "Lara", 
+    studentId: "10416385",
+};

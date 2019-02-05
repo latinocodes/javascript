@@ -1,140 +1,103 @@
 const arr = require('./arrayUtils')
 const str = require('./stringUtils')
+const obj = require('./objUtils')
 
 
-// Testing Array Util file
+// Testing Array Util module
+console.log("\nTesting Array Util module: ")
+
 try{
+    // Should Fail
     console.log(arr.head("jose"))
+    console.log('head passed successfully');
 }catch(err){
-    console.log(err)
+    console.error("head test failed: "+ err);
 }
 
 try{
-    console.log(arr.head([]))
+    // should return 1
+    console.log(arr.head([1, 2, 3]))
+    console.log('head passed successfully');
 }catch(err){
-    console.log(err)
+    console.error("head test failed: "+ err);
 }
 
 try{
-    console.log(arr.head([1, 2, 3, 4, 5]))
+    // should failed
+    console.log(arr.remove([1, 2, 3], 5));
+    console.log('remove passed successfully');
 }catch(err){
-    console.log(err)
+    console.error("remove test failed: "+ err);
 }
 
 try{
-    console.log(arr.last([1, 2, 3]))
-}catch(err){
-    console.log(err)
-}
-
-try{
-    console.log(arr.remove([1, 2, 3], 5))
-}catch(err){
-    console.log(err)
-}
-
-try{
+    // should pass, return [1, 3]
     console.log(arr.remove([1, 2, 3], 1))
+    console.log('remove passed successfully, expected valud [1, 3]');
 }catch(err){
-    console.log(err)
+    console.error("remove test failed: "+ err);
 }
 
-try{
-    console.log(arr.countElements([13, '13', 13, 'hello', true, true]))
-}catch(err){
-    console.log(err)
-}
 
 try{
-    console.log(arr.isEqual([], []))
-}
-catch(err){
-    console.log(err)
-}
-
-try{
-    console.log(arr.isEqual([1, 2, 3], [1, 2, 3]))
-}
-catch(err){
-    console.log(err)
-}
-
-try{
-    console.log(arr.isEqual([1, 1, 3], [1, 2, 3]))
-}
-catch(err){
-    console.log(err)
-}
-
-try{
-    console.log(arr.range(3))
-}
-catch(err){
-    console.log(err)
-}
-try{
+    // should pass, returns ['hi', 'hi', 'hi']
     console.log(arr.range(3, "hi"))
-
-}
-catch(err){
-    console.log(err)
+    console.log('range passed successfully');
+}catch(err){
+    console.error("range test failed: "+ err);
 }
 
 try{
+    // should failed
     console.log(arr.range())
-}
-catch(err){
-    console.log(err)
+    console.log('range passed successfully');
+}catch(err){
+    console.error("range test failed: "+ err);
 }
 
 // Testing String Util file
-
+console.log('\nTesting String Util file');
 try{
+    // should pass, should return Jose
     console.log(str.capitalize("jose"))
+    console.log('capitalize passed successfully');
 }catch(err){
-    console.log(err)
+    console.error("capitalize test failed: "+ err);
 }
 
-try{
-    console.log(str.capitalize("FOOBAR"))
-}catch(err){
-    console.log(err)
-}
-
-try{
+try{    
+    // should failed
     console.log(str.capitalize(""))
+    console.log('capitalize passed successfully');
 }catch(err){
-    console.log(err)
+    console.error("capitalize test failed: "+ err);
 }
 
 try{
+    // should pass, returns abc
     console.log(str.repeat("abc", 1))
+    console.log('repeat passed successfully');
 }catch(err){
-    console.log(err)
+    console.error("repeat test failed: "+ err);
+}
+
+
+// Testing ObjUtils module
+console.log("\nTesting Obj Utils module")
+const first = { x: 2, y: 3};
+
+try{
+    // should pass, return { x: 3, y: 4 }
+    console.log(obj.mapValue(first, n => n + 1))
+    console.log('mapValue passed successfully');
+} catch(err){
+    console.error("mapValue test failed: "+ err);
 }
 
 try{
-    console.log(str.repeat("abc", 0))
-}catch(err){
-    console.log(err)
-}
-
-try{
-    console.log(str.repeat("", 1))
-}catch(err){
-    console.log(err)
-}
-
-try{
-    console.log(str.countChart("JO seee helloooo"))
-}
-catch(err){
-    console.log(err)
-}
-
-try{
-    console.log(str.countChart(""))
-}
-catch(err){
-    console.log(err)
+    // should failed
+    console.log(obj.mapValue({ a: 1, b: 2, c: 3 }, "Hello world"))
+    console.log('mapValue passed successfully');
+} catch(err){
+    console.error("mapValue test failed: "+ err);
 }
