@@ -20,7 +20,6 @@ const helpConcatObj = (values, override=false) => {
             else if(override == true){
                 extended[key] = value
             }
-            
         }
     }
     return extended;
@@ -33,18 +32,35 @@ const extend = (...values) => {
     if(values.length < 2)
         throw 'arguments must be at least two'
 
-    return helpConcatObj(values, false);
+    return helpConcatObj(values, override=false);
 }
 
 const smush = (...values) => {
     // function taskes array of arguments and merge each object it overwrites properties from earlier entries
-
+    
     if(values.length < 2)
         throw 'arguments must be at least two'
 
-    return helpConcatObj(values, true);
+    return helpConcatObj(values, override=true);
 }
 
+const mapValue = (values, fun) => {
+    let extended = {}
+    
+    if(typeof values != "object"){
+        throw 'arguments must be objects'
+    }
+    // Getting the entry from each object element
+    let entries = Object.entries(values)
+
+    // looping throught key value entry if not in extended dictionary, add it
+    for (let [key, value] of entries) {
+        if (!extended.hasOwnProperty(key)){
+            extended[key] = fun(value)
+        }
+    }
+    return extended;
+}
 
 
 const first = { x: 2, y: 3};
@@ -80,3 +96,6 @@ console.log(firstSecondThird1)
 console.log(secondThird1)
 console.log(thirdFirstSecond1)
 
+console.log("printing mapValue")
+console.log(mapValue(first, n => n + 1))
+console.log(mapValue({ a: 1, b: 2, c: 3 }, function hola(val) { return val * 5}))
