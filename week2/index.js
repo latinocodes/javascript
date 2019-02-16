@@ -88,16 +88,16 @@ const first = { x: 2, y: 3};
 
 try{
     // should pass, return { x: 3, y: 4 }
-    console.log(obj.mapValue(first, n => n + 1))
-    console.log('mapValue passed successfully');
+    console.log(obj.mapValues(first, n => n + 1))
+    console.log('mapValues passed successfully');
 } catch(err){
-    console.error("mapValue test failed: "+ err);
+    console.error("mapValues test failed: "+ err);
 }
 
 try{
     // should failed
-    console.log(obj.mapValue({ a: 1, b: 2, c: 3 }, "Hello world"))
-    console.log('mapValue passed successfully');
+    console.log(obj.mapValues({ a: 1, b: 2, c: 3 }, "Hello world"))
+    console.log('mapValues passed successfully');
 } catch(err){
-    console.error("mapValue test failed: "+ err);
+    console.error("mapValues test failed: "+ err);
 }

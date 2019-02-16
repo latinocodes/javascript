@@ -28,7 +28,7 @@ exports.repeat = (value, num) => {
     else { throw "invalid String"}; 
 }
 
-exports.countChart = (value) => {
+exports.countChars = (value) => {
         // Count the instances of each letter in string
     dict = {}
     if(!isEmpty(value) && checkIfString(value)){

@@ -11,18 +11,20 @@ const validateArray = (arr) => {
 
 const isOutOfRange = (arr, index=0) => {
     // checks if array is out of range
-    let flag;
+    if(index < 0)
+        throw 'array is out of range'
     if((arr.length) < index){
-        flag = true
         throw "array is out of range"
     }
-    flag = false
-    return flag
+    return false
 }
 
 const isArrayEmpty = (arr) => {
     // Checks if the array is empty
-    return arr.length === 0 ? true : false;
+    if(arr.length === 0){
+        throw 'empty array'
+    }
+    return false;
 }
 
 exports.head = (arr) => {
@@ -49,9 +51,8 @@ exports.last = (arr) => {
 exports.remove = (arr, index) => {
     // removes index passed element from array 
     let result = validateArray(arr)
-    isOutOfRange(arr, index)
 
-    if(result == true && !isArrayEmpty(arr)){
+    if(result == true && !isArrayEmpty(arr) && !isOutOfRange(arr, index)){
         arr.splice(index, 1)
         return arr
     }

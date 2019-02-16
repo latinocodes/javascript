@@ -44,7 +44,7 @@ exports.smush = (...values) => {
     return helpConcatObj(values, override=true);
 }
 
-exports.mapValue = (values, fun) => {
+exports.mapValues = (values, fun) => {
     //  this function takes an object and a function as arguments and map those objects values to the function returning a new modified object based on the function
     let modifiedObject = {}
     
