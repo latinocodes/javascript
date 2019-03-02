@@ -21,6 +21,7 @@ const validateName = (firstName, lastName) => {
 }
 
 exports.getPersonBySocial = async (social) => {
+    /* Function takes ssn if found then returns the person of who it belongs */
     const people = await axios.get('https://gist.githubusercontent.com/robherley/5112d73f5c69a632ef3ae9b7b3073f78/raw/24a7e1453e65a26a8aa12cd0fb266ed9679816aa/people.json');
     let person = people.data.find((item) => {
         if (item.ssn === social){
@@ -31,6 +32,7 @@ exports.getPersonBySocial = async (social) => {
 }
 
 exports.getPersonByName = async (firstName, lastName) => {
+    /* Function takes firstname and lastName if found then returns the person of who it belongs */
     validateName(firstName, lastName)
     const people = await axios.get('https://gist.githubusercontent.com/robherley/5112d73f5c69a632ef3ae9b7b3073f78/raw/24a7e1453e65a26a8aa12cd0fb266ed9679816aa/people.json');
     let person = people.data.find((item) => {
@@ -42,6 +44,7 @@ exports.getPersonByName = async (firstName, lastName) => {
 }
 
 exports.getPersonById = async (id) => {
+    /* Function takes id if found then check the ssn and returns the person's first and Last Name of who it belongs */
     validId(id);
     try{
         const people = await axios.get('https://gist.githubusercontent.com/robherley/5112d73f5c69a632ef3ae9b7b3073f78/raw/24a7e1453e65a26a8aa12cd0fb266ed9679816aa/people.json');
@@ -56,6 +59,7 @@ exports.getPersonById = async (id) => {
 }
 
 exports.lexIndex = async (index) => {
+    /* Function sorts the people list by lastName then seach the index provided if found then returns the person's first and Last Name */
     validId(index);
     try{
         const people = await axios.get('https://gist.githubusercontent.com/robherley/5112d73f5c69a632ef3ae9b7b3073f78/raw/24a7e1453e65a26a8aa12cd0fb266ed9679816aa/people.json');
@@ -70,14 +74,28 @@ exports.lexIndex = async (index) => {
 }
 
 
-exports.firstNameMetrics = () => {
+exports.firstNameMetrics = async () => {
+    /* Function returns an object of metrics with total number of letters, vowels, consonants found in first name
+        it also returns the longest and shortest name from people list */
     metrics = {
-        totalLetters: '',
-        totalVowels: '',
-        totalConsonants: '',
+        totalLetters: 0,
+        totalVowels: 0,
+        totalConsonants: 0,
         longestName: '',
         shortestName: ''
     }
-
-
+    try{
+        const people = await axios.get('https://gist.githubusercontent.com/robherley/5112d73f5c69a632ef3ae9b7b3073f78/raw/24a7e1453e65a26a8aa12cd0fb266ed9679816aa/people.json');
+        for(let p of people.data){
+            metrics.totalLetters += p.firstName.length;
+            metrics.totalVowels += parseInt((p.firstName.match(/[aeiou]/gi) || []).length);
+            metrics.totalConsonants += parseInt((p.firstName.match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length)
+            metrics.longestName = metrics.longestName.length === 0 ? p.firstName : (metrics.longestName.length < p.firstName.length) ? p.firstName : metrics.longestName
+            metrics.shortestName = metrics.shortestName.length === 0 ? p.firstName : (metrics.shortestName.length < p.firstName.length) ? metrics.shortestName : p.firstName
+        }
+        return metrics
+    }
+    catch(err){
+        return err
+    }
 }
