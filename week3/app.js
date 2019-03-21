@@ -12,7 +12,7 @@ async function main(){
     }
 
     try{
-        let person = await people.getPersonById(1000)
+        let person = await people.getPersonById(9000)
         console.log(person)
     }
     catch(err){
@@ -64,7 +64,7 @@ async function main(){
         console.log(err)
     }
     try{
-        let person = await weather.shouldTheyGoOutside()
+        let person = await weather.shouldTheyGoOutside("d")
         console.log(person)
     }
     catch(err){

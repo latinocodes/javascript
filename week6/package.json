@@ -1,0 +1,15 @@
+{
+  "name": "cs-546-lab-6",
+  "version": "1.0.0",
+  "description": "This lab is to practice returning JSON from the express server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Lara 10416385",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
