@@ -1,0 +1,15 @@
+{
+  "name": "cs-546-lab-7",
+  "version": "1.0.0",
+  "description": "For this lab, we are going to make more parts of the database for a social media website for animals, as well as developing a simple API to interact with your application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Lara 10416385",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
