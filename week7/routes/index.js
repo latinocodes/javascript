@@ -1,11 +1,11 @@
-const educationRoutes = require("./education");
-const storyRoutes = require("./story");
-const aboutRoutes = require("./about");
+const animalsRoutes = require("./animals");
+const postsRoutes = require("./posts");
+// const likesRoutes = require("./likes");
 
 const appConstructorMethod = app => {
-  app.use("/about", aboutRoutes);
-  app.use("/story", storyRoutes);
-  app.use("/education", educationRoutes);
+  app.use("/animals", animalsRoutes);
+  app.use("/posts", postsRoutes);
+  // app.use("/likes", likesRoutes);
 
   app.use("*", (req, res) => {
     res.status(404).json({ error: "Page Not found" });
