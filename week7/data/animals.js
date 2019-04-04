@@ -94,7 +94,6 @@ exports.update = async (id, name, animalType) => {
             name: name,
             animalType: animalType
         };
-        console.log(id)
         const updatedInfo = await animalCollection.updateOne({ _id: ObjectID(id) }, {$set: updatedAnimal});
         if (updatedInfo.modifiedCount === 0) {
             throw "could not update the Animal successfully";
@@ -102,6 +101,40 @@ exports.update = async (id, name, animalType) => {
         return this.get(ObjectID(id));
 
     } catch (error) {
+        throw error;
+    }
+};
+
+exports.addLike = async (id, likeId) => {
+    if(!id) {  throw 'invalid id input'}
+    if(!likeId){  throw 'invalid likeId input'}
+
+    try{
+        const animalCollection = await animals();
+        const updateAnimal = await animalCollection.updateOne({ _id: ObjectID(id) }, {$push: {likes: likeId}})
+        if(updateAnimal === 0){
+            throw "could not update the Animal successfully";
+        }
+        return this.get(id);
+    }
+    catch(error){
+        throw error;
+    }
+};
+
+exports.removeLike = async (id, likeId) => {
+    if(!id) {  throw 'invalid id input'}
+    if(!likeId){  throw 'invalid likeId input'}
+
+    try{
+        const animalCollection = await animals();
+        const updateAnimal = await animalCollection.updateOne({ _id: ObjectID(id) }, {$pull: {likes: likeId}})
+        if(updateAnimal === 0){
+            throw "could not update the Animal successfully";
+        }
+        return this.get(ObjectID(id));
+    }
+    catch(error){
         throw error;
     }
 };

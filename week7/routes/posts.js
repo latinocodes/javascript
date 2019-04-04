@@ -5,9 +5,7 @@ const postsData = data.posts;
 
 router.get('/', async (req, res) => {
     try{
-      console.log('before')
       const posts = await postsData.getAllPosts();
-      console.log('here')
       return res.json(posts)
     }
     catch(e) { return res.sendStatus(500); }
