@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    font-size: 14pt;
+  }
+  
+  body {
+    background: #aabbaa;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+  
+  main {
+    max-width: 75%;
+    margin: auto;
+  }
+  .title{
+    color: firebrick;
+    text-align: center;
+  }
+  main>div{
+    text-align: center;
+  }
+  nav{
+    text-align: right;
+    font-size: 1.2em;
+    margin-right: 20px;
+  }
+  li{
+    list-style-type: none;
+  }
+  
+  input[type=text]{
+    width: 50%;
+    padding: 4px;
+    border-radius: 5px;
+  }
+  input[type=submit]{
+    text-align: right;
+    padding: 6px;
+    background-color: #aabbaa;
+    border-radius: 5px;
+  }
+  input[type=submit]:hover{
+    background-color: lightgreen;
+    transition: 1s  background-color;
+  }
+
+  label{
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+  }
+
+  .list ul li{
+    font-size: 26px;
+    text-decoration: none;
+
+  }
+  .list ul li a:hover{
+    color: lightgreen;
+    transition: 1s  background-color;
+  }
+  a:visited{
+    color: #fff;
+    text-decoration: none;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }
+
+  .person-details {
+    text-align: center;
+  } 
+
+  .person-details h2{
+    color: #fff;
+    font-size: 36px;
+  }
+
+  .person-details dl dt{
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .person-details dl dd{
+    color: #fff;
+  }

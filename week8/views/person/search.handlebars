@@ -1,0 +1,21 @@
+<main class="page-section">
+    <div>
+        <h1 class="title">{{title}}</h1>
+        <p>{{description}}</p>
+    </div>
+    <div class="list">
+        {{#if hasErrors}}
+            <p class="error">{{errors}}</p>
+        {{/if}}
+        {{#unless found}}
+           <p class="not-found">{{message}}</p>
+        {{/unless}}
+        {{#if people}}
+            <ul>        
+                {{#each people}}
+                    <li><a href="/details/{{this.id}}"> {{this.firstName}} {{this.lastName}}</a></li>
+                {{/each}} 
+            </ul>
+        {{/if}}
+    </div>
+</main>

@@ -1,0 +1,28 @@
+<main class="page-section">
+    <section>
+      <h1 class="title">{{title}}</h1>
+      <article class="person-details">
+        <h2>{{person.firstName}} {{person.lastName}}</h2>
+        {{#if hasErrors}}
+            {{errors}}
+        {{else}}
+          <dl>
+            <dt>ID:</dt>
+            <dd>{{person.id}}</dd>
+            <dt>First Name:</dt>
+            <dd>{{person.firstName}}</dd>
+            <dt>Last Name:</dt>
+            <dd>{{person.lastName}}</dd>
+            <dt>Address:</dt>
+            <dd>{{person.address}}</dd>
+            <dt>Zip Code:</dt>
+            <dd>{{person.zip}}</dd>
+            <dt>Phone:</dt>
+            <dd>{{person.phone}}</dd>
+            <dt>Social Security Number:</dt>
+            <dd>{{person.ssn}}</dd>
+          </dl> 
+        {{/if}}
+      </article>
+  </section>
+</main>
