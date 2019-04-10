@@ -51,7 +51,7 @@ exports.getTwentyPeople = async (name) => {
         let newList = [];
         const people = await axios.get('https://gist.githubusercontent.com/robherley/5112d73f5c69a632ef3ae9b7b3073f78/raw/24a7e1453e65a26a8aa12cd0fb266ed9679816aa/people.json');
         people.data.find((item) => {
-            if(item.firstName.includes(name) || item.lastName.includes(name)){
+            if(item.firstName.toLowerCase().includes(name.toLowerCase()) || item.lastName.toLowerCase().includes(name.toLowerCase())){
                 if(newList.length < 20){ newList.push(item)}
             }
         })
