@@ -1,0 +1,18 @@
+{
+  "name": "cs-546-lab-9",
+  "version": "1.0.0",
+  "description": "This is to work with form validation on the client side",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Lara 10416385",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "handlebars": "^4.1.1"
+  }
+}
