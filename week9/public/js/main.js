@@ -14,7 +14,7 @@ function isNumberPrime(value){
 }
 
 function doYourThing(){
-    if($('#input-number').val() < 0){
+    if($('#input-number').val() <= 0){
         $('#error').removeClass('hidden');
         $('#error').html("Number must be grater than 0");
     }
