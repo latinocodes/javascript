@@ -1,0 +1,15 @@
+<section id="main-section">
+    <div class="title">
+        <h1>Login</h1>
+    </div>
+        <form method="POST" action="/login" id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <button type="submit">Go</button>
+        </form>
+    {{#if hasErrors}}
+        {{error_message}}
+    {{/if}}
+</section>
