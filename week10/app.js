@@ -54,18 +54,25 @@ app.post('/login', async (req, res) => {
     const user = users.find(user => user.username === username);
     let match;
     
+    console.log(user)
     // Check password
-    try{ match =  await bcrypt.compare(password, user.hashedPassword); }
-    catch(e){ console.log(e); }
-
-    if(match){
-      res.cookie("AuthCookie");
-      req.session.user = user;
-      res.redirect('/private');
+    if(user){
+      try{ match =  await bcrypt.compare(password, user.hashedPassword); }
+      catch(e){ console.log(e); }
+  
+      if(match){
+        res.cookie("AuthCookie");
+        req.session.user = user;
+        res.redirect('/private');
+      }
+      else{
+        // if credentials are invalid
+        res.status(401).render('login', {error_message: "must enter a valid password",  hasErrors: true})
+      }
     }
     else{
-      // if credentials are invalid
-      res.status(401).render('login', {error_message: "must enter a valid username and/or password",  hasErrors: true})
+      // if user was not found
+      res.status(401).render('login', {error_message: "that Username does not exist",  hasErrors: true})
     }
   }
   else{
